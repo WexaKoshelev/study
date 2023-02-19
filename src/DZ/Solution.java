@@ -5,10 +5,9 @@ import java.util.Scanner;
 public class Solution {
     void game() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Угадайте число от 0 до 1000.");
         int number = (int)(Math.random() * 1001.0);
-
         while(true) {
-            System.out.println("Угадайте число от 0 до 1000.");
             System.out.print("Введите число - ");
             int guessed = scanner.nextInt();
             if (guessed == number) {
