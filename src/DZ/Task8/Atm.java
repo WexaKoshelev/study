@@ -1,4 +1,4 @@
-package Task8;
+package DZ.Task8;
 
 public class Atm {
     private double course;

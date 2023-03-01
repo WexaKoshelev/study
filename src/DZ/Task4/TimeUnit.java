@@ -1,4 +1,4 @@
-package Task4;
+package DZ.Task4;
 
 public class TimeUnit {
     private final int LOW_BOUND;

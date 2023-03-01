@@ -1,6 +1,6 @@
-package Task3;
+package DZ.Task3;
 
-import Task2.Student;
+import DZ.Task2.Student;
 import java.util.Arrays;
 import java.util.Comparator;
 

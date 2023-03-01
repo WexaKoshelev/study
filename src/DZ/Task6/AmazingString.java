@@ -1,8 +1,6 @@
-package Task6;
+package DZ.Task6;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class AmazingString {
 

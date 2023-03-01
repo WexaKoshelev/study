@@ -1,4 +1,4 @@
-package Task7;
+package DZ.Task7;
 
 public class TriangleChecker {
     public static boolean checker (double a, double c, double b){

@@ -1,4 +1,4 @@
-package Task7;
+package DZ.Task7;
 
 public class Main {
     public static void main(String[] args) {

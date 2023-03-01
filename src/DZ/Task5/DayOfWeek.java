@@ -1,4 +1,4 @@
-package Task5;
+package DZ.Task5;
 
 public class DayOfWeek {
     private String week;
