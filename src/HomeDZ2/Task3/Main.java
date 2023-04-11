@@ -1,4 +1,4 @@
-package HommeDZ2.Task3;
+package HomeDZ2.Task3;
 
 import java.util.HashSet;
 import java.util.Set;

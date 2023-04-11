@@ -11,10 +11,10 @@ public class Main {
     }
 
     private static int inputN() throws Exception{
-        System.out.println("Введите число n, 0 < n < 100");
+        System.out.println("Введите число n, 0 <= n <= 100");
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        if (n < 100 && n > 0) {
+        if (n <= 100 && n >= 0) {
             throw new Exception("Неверный ввод");
         }
         return n;

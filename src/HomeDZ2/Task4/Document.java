@@ -1,4 +1,4 @@
-package HommeDZ2.Task4;
+package HomeDZ2.Task4;
 
 import java.util.HashMap;
 import java.util.List;
