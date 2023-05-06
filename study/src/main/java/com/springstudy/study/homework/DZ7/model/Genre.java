@@ -1,4 +1,4 @@
-package com.springstudy.study.homework.DZ7;
+package com.springstudy.study.homework.DZ7.model;
 
 public enum Genre {
     FANTASY,

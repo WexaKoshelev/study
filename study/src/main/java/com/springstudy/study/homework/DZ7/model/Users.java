@@ -1,4 +1,4 @@
-package com.springstudy.study.homework.DZ7;
+package com.springstudy.study.homework.DZ7.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @SequenceGenerator(name = "default_generator", sequenceName = "Users_sequence", allocationSize = 1)
-public class Users extends GenericModel{
+public class Users extends GenericModel {
     @Column(name = "login", nullable = false)
     private String login;
 
