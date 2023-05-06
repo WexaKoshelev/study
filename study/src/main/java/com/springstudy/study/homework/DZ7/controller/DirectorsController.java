@@ -31,7 +31,7 @@ public class DirectorsController extends GenericController <Directors> {
         this.filmsRepository = filmsRepository;
     }
     @Operation(description = "Добавить директора к фильмам")
-    @RequestMapping(value = "/addDirector", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/addFilms", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Directors> addDirector(@RequestParam(value = "director_id") Long director_id,
                                                  @RequestParam(value = "film_id") Long film_id) {
         Directors directors = directorsRepository.findById(director_id).orElseThrow(() -> new NotFoundException("Директор не найден"));
