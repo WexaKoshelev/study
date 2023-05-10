@@ -16,11 +16,13 @@ import java.util.List;
 @AllArgsConstructor
 @SequenceGenerator(name = "default_generator", sequenceName = "directors_sequence", allocationSize = 1)
 public class Directors extends  GenericModel{
+
     @Column(name = "directors_fio", nullable = false)
     private String filmTitle;
 
     @Column(name = "position", nullable = false)
     private Integer position;
+
     @ManyToMany
     @JoinTable(name = "FilmDirectors",
             joinColumns = @JoinColumn(name = "director_id"), foreignKey = @ForeignKey(name = "FK_DIRECTORS_FILMS"),

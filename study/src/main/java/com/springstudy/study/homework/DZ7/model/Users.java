@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Users")
 @Getter
@@ -48,4 +50,7 @@ public class Users extends GenericModel {
     @JoinColumn(name = "role_id", nullable = false,
             foreignKey = @ForeignKey(name = "FK_USERS_ROLES"))
     private Role role;
+
+    @OneToMany(mappedBy = "users")
+    private List<Orders> orders;
 }

@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "Orders")
 @Getter
@@ -23,11 +25,11 @@ public class Orders extends GenericModel{
     private Films films;
 
     @Column(name = "rentDate", nullable = false)
-    private Integer rentDate;
+    private LocalDateTime rentDate;
 
     @Column(name = "rentPeriod", nullable = false)
-    private Integer rentPeriod;
+    private LocalDateTime rentPeriod;
 
-    @Column(name = "purchase", nullable = false)
-    private Integer purchase;
+    @Column(name = "purchase")
+    private boolean purchase = false;
 }

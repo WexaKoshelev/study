@@ -25,11 +25,14 @@ public class Films extends GenericModel {
     @Column(name = "country", nullable = false)
     private String country;
 
-    @Column(name = "genre", nullable = false)
     @Enumerated
+    @Column(name = "genre", nullable = false)
     private Genre genre;
 
     @ManyToMany(mappedBy = "films")
     List <Directors> directors;
+
+    @OneToMany(mappedBy = "films")
+    private List<Orders> orders;
 
 }
