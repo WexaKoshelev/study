@@ -16,7 +16,7 @@ public class FilmsService extends GenericService<Films, FilmDTO> {
         super(repository, mapper);
         this.directorsRepository = directorsRepository;
     }
-    public FilmDTO addDirector (final Long filmId, final Long directorId){
+    public FilmDTO addDirector (Long filmId, Long directorId){
         FilmDTO film = getOne(filmId);
         Directors directors = directorsRepository.findById(directorId).orElseThrow(() -> new NotFoundException("Директор не найден"));
         update(film);

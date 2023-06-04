@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>Фильмы</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <div>
+    <hr class="hr"/>
+    <h1>Все фильмы</h1>
+    <div class="red">
+      <a href="films/add"
+         class="btn btn-secondery"
+         role="button"
+         style="..."
+         aria-disabled="true">Добавить фильм
+      </a>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Название</th>
+      <th scope="col">Страна</th>
+      <th scope="col">Продолжительность</th>
+      <th scope="col">Жанор</th>
+      <th scope="col">Киностудия</th>
+      <th scope="col">Дата премьеры</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="film : ${films}">
+      <td th:text="${film.getFilmTitle()}"></td>
+      <td th:text="${film.getCountry()}"></td>
+      <td th:text="${film.getDuration()}"></td>
+      <td th:text="${film.getGenre().getGenreTextDisplay()}"></td>
+      <td th:text="${film.getFilmStudio()}"></td>
+      <td th:text="${film.getPremierYear()}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

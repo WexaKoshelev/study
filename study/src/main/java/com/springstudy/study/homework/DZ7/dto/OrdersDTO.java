@@ -6,15 +6,18 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @ToString
 @Getter
 @Setter
 @NoArgsConstructor
 public class OrdersDTO extends  GenericDTO{
-    private Long usersId;
-    private Long filmsId;
+    private List<Long> userId;
+    private List<Long> filmId;
     private LocalDateTime rentData;
     private LocalDateTime rentPeriod;
-    private boolean purchase;
+    private String purchase;
+
+
 }

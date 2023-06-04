@@ -1,12 +1,12 @@
 package com.springstudy.study.homework.DZ7.dto;
 
-import com.springstudy.study.homework.DZ7.model.Directors;
 import com.springstudy.study.homework.DZ7.model.Genre;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @ToString
@@ -15,8 +15,11 @@ import java.util.List;
 @NoArgsConstructor
 public class FilmDTO extends GenericDTO{
     private String filmTitle;
-    private Integer premierYear;
+    private String duration;
+    private LocalDate premierYear;
     private String country;
     private Genre genre;
+    private String description;
+    private String filmStudio;
     private List<Long> directorsIds;
 }

@@ -1,6 +1,5 @@
 package com.springstudy.study.homework.DZ7.dto;
 
-import com.springstudy.study.homework.DZ7.model.Role;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,5 +24,5 @@ public class UserDTO extends  GenericDTO{
     private String email;
     private Integer createdWhen;
     private RoleDTO role;
-    private List<Long> userOrders;
+    private List<Long> userOrdersId;
 }

@@ -18,7 +18,7 @@ import java.util.List;
 public class Directors extends  GenericModel{
 
     @Column(name = "directors_fio", nullable = false)
-    private String filmTitle;
+    private String fio;
 
     @Column(name = "position", nullable = false)
     private Integer position;

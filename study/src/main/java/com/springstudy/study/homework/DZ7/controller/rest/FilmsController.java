@@ -1,4 +1,4 @@
-package com.springstudy.study.homework.DZ7.controller;
+package com.springstudy.study.homework.DZ7.controller.rest;
 
 import com.springstudy.study.homework.DZ7.dto.FilmDTO;
 import com.springstudy.study.homework.DZ7.model.Films;
@@ -20,6 +20,8 @@ public class FilmsController extends GenericController<Films, FilmDTO>{
     public FilmsController(FilmsService filmsService) {
         super(filmsService);
     }
+
+
     @Operation(description = "Добавить директора к фильмам")
     @RequestMapping(value = "/addDirectors", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<FilmDTO> addDirector(@RequestParam(value = "filmId") Long filmId,

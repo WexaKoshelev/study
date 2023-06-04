@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -20,7 +22,7 @@ public class Films extends GenericModel {
     private String filmTitle;
 
     @Column(name = "premier_year", nullable = false)
-    private Integer premierYear;
+    private LocalDate premierYear;
 
     @Column(name = "country", nullable = false)
     private String country;

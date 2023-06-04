@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 public class DirectorDTO extends GenericDTO {
-    private String filmTitle;
+    private String fio;
     private Integer position;
     List<Long> filmsId;
 
