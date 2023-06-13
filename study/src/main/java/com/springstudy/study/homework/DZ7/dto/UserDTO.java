@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 public class UserDTO extends  GenericDTO{
     private String login;
-    private Integer password;
+    private String password;
     private String firstName;
     private String lastName;
     private String middleName;

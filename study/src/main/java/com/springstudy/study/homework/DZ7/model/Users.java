@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -20,7 +21,7 @@ public class Users extends GenericModel {
     private String login;
 
     @Column(name = "password", nullable = false)
-    private Integer password;
+    private String password;
 
     @Column(name = "firstName", nullable = false)
     private String firstName;
@@ -32,7 +33,7 @@ public class Users extends GenericModel {
     private String middleName;
 
     @Column(name = "birthDate", nullable = false)
-    private Integer birthDate;
+    private LocalDate birthDate;
 
     @Column(name = "phone", nullable = false)
     private Integer phone;
@@ -51,6 +52,6 @@ public class Users extends GenericModel {
             foreignKey = @ForeignKey(name = "FK_USERS_ROLES"))
     private Role role;
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "users", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Orders> orders;
 }

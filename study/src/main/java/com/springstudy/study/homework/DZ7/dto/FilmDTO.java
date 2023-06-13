@@ -22,4 +22,5 @@ public class FilmDTO extends GenericDTO{
     private String description;
     private String filmStudio;
     private List<Long> directorsIds;
+    private List<DirectorDTO> directorInfo;
 }

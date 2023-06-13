@@ -3,7 +3,7 @@
      th:fragment="header">
   <nav class="navbar navbar-expand-lg" style="background-color: #37c119">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/" style="color: red">Аренда и покупка фильмов</a>
+      <a class="navbar-brand" href="/" style="color: #ba1a1a">Аренда и покупка фильмов</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
               aria-expanded="false" aria-label="Toggle navigation">
@@ -15,18 +15,22 @@
             <a class="nav-link active" aria-current="page" href="/films">Фильмы</a>
           </li>
           <li class="nav-link">
-            <a class="nav-link active" aria-current="page" href="/directors">Кинорежиссеры</a>
+            <a class="nav-link active" aria-current="page" href="/directors">Режиссеры</a>
           </li>
           <li sec:authorize="isAuthenticated() && (hasRole('USER'))" class="nav-link">
-            <a class="nav-link active" aria-current="page" href="/my/films">Мои фильмы</a>
+            <a class="nav-link active" aria-current="page" th:href="'/rent/user-books/' + ${#authentication.getPrincipal().getUserId()}">Мои фильмы</a>
           </li>
           <li sec:authorize="isAuthenticated() && (hasRole('ADMIN') || hasRole('LIBRARIAN'))" class="nav-link">
             <a class="nav-link active" aria-current="page" href="/users/list">Пользователи</a>
           </li>
         </ul>
+        <form class="d-flex" sec:authorize="isAuthenticated()">
+          <span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+        </form>
         <div sec:authorize="isAuthenticated() && !hasRole('ADMIN')">
           <a class="nav-link active" style="float: right" th:href="'/users/profile/' + ${#authentication.getPrincipal().getUserId()}">Профиль</a>
         </div>
+
         <form class="d-flex" sec:authorize="!isAuthenticated()">
           <a href="/login" class="btn btn-primary" role="button" aria-disabled="true">Войти</a>
         </form>
@@ -37,3 +41,6 @@
     </div>
   </nav>
 </div>
+
+
+

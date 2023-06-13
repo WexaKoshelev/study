@@ -16,15 +16,20 @@ import java.util.stream.Collectors;
 @Component
 public class FilmsMapper extends GenericMapper <Films, FilmDTO> {
     private final DirectorsRepository directorsRepository;
-    public FilmsMapper( ModelMapper modelMapper, DirectorsRepository directorsRepository) {
+    private final DirectorsMapper directorsMapper;
+    public FilmsMapper(ModelMapper modelMapper, DirectorsRepository directorsRepository, DirectorsMapper directorsMapper) {
         super(Films.class, FilmDTO.class, modelMapper);
         this.directorsRepository = directorsRepository;
+        this.directorsMapper = directorsMapper;
     }
     @PostConstruct
     @Override
     protected void setupMapper() {
         modelMapper.createTypeMap(Films.class, FilmDTO.class)
-                .addMappings(m -> m.skip(FilmDTO :: setDirectorsIds)).setPostConverter(toDTOConverter());
+                .addMappings(m -> {
+                    m.skip(FilmDTO :: setDirectorsIds);
+                    m.skip(FilmDTO :: setDirectorInfo);
+                }).setPostConverter(toDTOConverter());
         modelMapper.createTypeMap(FilmDTO.class, Films.class)
                 .addMappings(m -> m.skip(Films :: setDirectors)).setPostConverter(toEntityConverter());
 
@@ -41,6 +46,8 @@ public class FilmsMapper extends GenericMapper <Films, FilmDTO> {
     @Override
     protected void mapSpecificFields(Films source, FilmDTO destination) {
         destination.setDirectorsIds(getIds(source));
+        destination.setDirectorInfo(directorsMapper.toDTOs(source.getDirectors()));
+
     }
     @Override
     protected List<Long> getIds(Films films) {

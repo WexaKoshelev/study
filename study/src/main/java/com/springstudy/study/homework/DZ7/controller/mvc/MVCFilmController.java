@@ -3,12 +3,12 @@ package com.springstudy.study.homework.DZ7.controller.mvc;
 import com.springstudy.study.homework.DZ7.dto.FilmDTO;
 import com.springstudy.study.homework.DZ7.service.FilmsService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,8 +21,11 @@ public class MVCFilmController {
         this.filmsService = filmsService;
     }
     @GetMapping
-    public  String getAll (Model model) {
-        List<FilmDTO> films = filmsService.listAll();
+    public String getAll(@RequestParam(value = "page", defaultValue = "1") int page,
+                         @RequestParam(value = "size", defaultValue = "5") int pageSize,
+                         Model model) {
+        PageRequest pageRequest = PageRequest.of(page - 1, pageSize, Sort.by(Sort.Direction.ASC, "filmTitle"));
+        Page<FilmDTO> films = filmsService.getAllFilms(pageRequest);
         model.addAttribute("films", films);
         return "films/vievAllFilms";
     }

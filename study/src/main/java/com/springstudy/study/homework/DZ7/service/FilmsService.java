@@ -6,8 +6,14 @@ import com.springstudy.study.homework.DZ7.model.Directors;
 import com.springstudy.study.homework.DZ7.model.Films;
 import com.springstudy.study.homework.DZ7.repository.DirectorsRepository;
 import com.springstudy.study.homework.DZ7.repository.FilmsRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
+
+import java.util.List;
+
 @Service
 public class FilmsService extends GenericService<Films, FilmDTO> {
     private final DirectorsRepository directorsRepository;
@@ -15,6 +21,11 @@ public class FilmsService extends GenericService<Films, FilmDTO> {
     protected FilmsService(FilmsRepository repository, FilmsMapper mapper, DirectorsRepository directorsRepository) {
         super(repository, mapper);
         this.directorsRepository = directorsRepository;
+    }
+    public Page<FilmDTO> getAllFilms (Pageable pageable) {
+        Page<Films> filmsPage = repository.findAll(pageable);
+        List<FilmDTO> result = mapper.toDTOs(filmsPage.getContent());
+        return new PageImpl<>(result, pageable, filmsPage.getTotalElements());
     }
     public FilmDTO addDirector (Long filmId, Long directorId){
         FilmDTO film = getOne(filmId);

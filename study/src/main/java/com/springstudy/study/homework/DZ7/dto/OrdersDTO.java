@@ -13,11 +13,11 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class OrdersDTO extends  GenericDTO{
-    private List<Long> userId;
-    private List<Long> filmId;
+    private Long userId;
+    private Long filmId;
     private LocalDateTime rentData;
-    private LocalDateTime rentPeriod;
-    private String purchase;
-
+    private Integer rentPeriod;
+    private Boolean purchase;
+    private FilmDTO filmDTO;
 
 }

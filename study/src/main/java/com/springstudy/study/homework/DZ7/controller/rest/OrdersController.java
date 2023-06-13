@@ -21,11 +21,11 @@ public class OrdersController extends GenericController<Orders, OrdersDTO>{
         super(ordersRepository);
     }
 
-    @Operation(description = "Взять фильм в аренду/купить")
-    @RequestMapping(value = "/takeMovie", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<OrdersDTO> takeMovie (@RequestParam(value = "orderId") Long orderId,
-                                                @RequestParam(value = "filmId") Long filmId,
-                                                @RequestParam(value = "userId") Long userId) {
-        return ResponseEntity.status(HttpStatus.OK).body(((OrdersService)service).takeMovie(orderId, filmId, userId));
-    }
+//    @Operation(description = "Взять фильм в аренду/купить")
+//    @RequestMapping(value = "/takeMovie", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<OrdersDTO> takeMovie (@RequestParam(value = "orderId") Long orderId,
+//                                                @RequestParam(value = "filmId") Long filmId,
+//                                                @RequestParam(value = "userId") Long userId) {
+//        return ResponseEntity.status(HttpStatus.OK).body(((OrdersService)service).takeMovie(orderId, filmId, userId));
+//    }
 }
