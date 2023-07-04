@@ -31,17 +31,6 @@ public class OrdersService extends GenericService<Orders, OrdersDTO> {
         this.filmsRepository = filmsRepository;
         this.userRepository = userRepository;
     }
-//    public OrdersDTO takeMovie (Long userId, Long filmId, Long orderId){
-//        Films films = filmsRepository.findById(filmId).orElseThrow(() -> new NotFoundException("Фильм не найден"));
-//        Users users = userRepository.findById(userId).orElseThrow(() -> new NotFoundException("Пользователь не найден"));
-//        OrdersDTO orders = getOne(orderId);
-//        orders = getOne(userId);
-//        orders.getUserId().add(users.getId());
-//        orders.getFilmId().add(films.getId());
-//        update(orders);
-//        return orders;
-//    }
-
     public final OrdersDTO rentFilm (OrdersDTO rentOrdersDTO) {
         FilmDTO filmDTO = filmsService.getOne(rentOrdersDTO.getId());
         filmsService.update(filmDTO);
@@ -52,18 +41,18 @@ public class OrdersService extends GenericService<Orders, OrdersDTO> {
         rentOrdersDTO.setCreatedBy(SecurityContextHolder.getContext().getAuthentication().getName());
         return mapper.toDTO(repository.save(mapper.toEntity(rentOrdersDTO)));
     }
-    public void returnFilm (Long id) {
-        OrdersDTO ordersDTO = getOne(id);
-        ordersDTO.setPurchase(true);
-       FilmDTO filmDTO = ordersDTO.getFilmDTO();
-       update(ordersDTO);
-       filmsService.update(filmDTO);
-    }
-    public Page<OrdersDTO> listUserRentFilms(final Long id,
-                                             final Pageable pageRequest) {
-        Page<Orders> objects = ((OrdersRepository) repository).getOrderUserId(id, pageRequest);
-        List<OrdersDTO> results = mapper.toDTOs(objects.getContent());
-        return new PageImpl<>(results, pageRequest, objects.getTotalElements());
-    }
+//    public void returnFilm (Long id) {
+//        OrdersDTO ordersDTO = getOne(id);
+//        ordersDTO.setPurchase(true);
+//       FilmDTO filmDTO = ordersDTO.getFilmDTO();
+//       update(ordersDTO);
+//       filmsService.update(filmDTO);
+//    }
+//    public Page<OrdersDTO> listUserRentFilms(final Long id,
+//                                             final Pageable pageRequest) {
+//        Page<Orders> objects = ((OrdersRepository) repository).getOrderUserId(id, pageRequest);
+//        List<OrdersDTO> results = mapper.toDTOs(objects.getContent());
+//        return new PageImpl<>(results, pageRequest, objects.getTotalElements());
+//    }
 
 }

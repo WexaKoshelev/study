@@ -8,37 +8,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Вход в Библиотеку фильмов</title>
+    <title>Вход в Онлайн Библиотеку</title>
 </head>
 <body>
 <div layout:fragment="content" class="container-fluid mt-5">
     <form method="POST" th:action="@{/login}">
+        <div class="mb-3">
+            <div class="mb-3 d-flex justify-content-center align-items-center">
+                <img src="/img/logo_login.svg" alt="" width="108" height="86">
+            </div>
+            <h1 class="h3 form-floating col-md-4 offset-md-4 m-auto">Вход в онлайн фильмотеку</h1>
+        </div>
         <div th:if="${param.error}">
             <div class="alert alert-danger">
                 <p style="float: none">Неверный логин/пароль</p>
             </div>
         </div>
-        <div class="form-group col-md-3 offset-md-4 m-auto">
-            <p class="h2" style="text-align:center">Вход в Библиотеку фильмов</p>
+        <div class="mb-3">
+            <div class="form-floating col-md-4 offset-md-4 m-auto">
+                <input name="username" type="text" class="form-control" id="floatingInput"
+                       placeholder="Имя пользователя">
+                <label for="floatingInput">Введите имя пользователя</label>
+            </div>
         </div>
-        <div class="form-group col-md-2 offset-md-4 m-auto">
-            <input name="username" type="text" class="form-control" id="exampleInputUsername"
-                   placeholder="Имя пользователя"
-                   aria-describedby="usernameHelp"/>
-            <label for="exampleInputUsername"></label>
-            <small id="usernameHelp" class="form-text text-muted">Введите имя пользователя</small>
+        <div class="mb-3">
+            <div class="form-floating col-md-4 offset-md-4 m-auto">
+                <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Пароль">
+                <label for="floatingPassword">Введите пароль</label>
+            </div>
         </div>
-        <div class="form-group col-md-2 offset-md-4 m-auto">
-            <input name="password" type="password" class="form-control" id="exampleInputPassword"
-                   placeholder="Пароль">
-            <label for="exampleInputPassword"></label>
-            <small id="passwordHelp" class="form-text text-muted">Введите пароль</small>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-info col-md-4 offset-md-4">Войти</button>
         </div>
-        <div class="form-group col-md-3 offset-md-4 m-auto">
-            <button type="submit" class="btn btn-success offset-md-5">Войти</button>
-            <div class="mt-1">
-                <a class="offset-md-3 text-link" href="/users/registration">Зарегистрироваться</a>
-                <a class="offset-md-3 text-link" href="/users/remember-password">Забыли пароль?</a>
+        <div class="mb-5">
+            <div class="btn-group col-md-4 offset-md-4" role="group" aria-label="Basic example">
+                <a class="btn btn-link" href="/users/registration">Зарегистрироваться</a>
+                <a class="btn btn-link" href="/users/remember-password">Забыли пароль?</a>
             </div>
         </div>
     </form>

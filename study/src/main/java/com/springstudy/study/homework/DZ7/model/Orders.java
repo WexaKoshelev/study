@@ -16,11 +16,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @SequenceGenerator(name = "default_generator", sequenceName = "orders_sequence", allocationSize = 1)
 public class Orders extends GenericModel{
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "user_id", nullable = false, foreignKey = @ForeignKey(name = "FK_ORDER_USER"))
     private Users users;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "film_id", nullable = false, foreignKey = @ForeignKey(name = "FK_ORDER_Film"))
     private Films films;
 

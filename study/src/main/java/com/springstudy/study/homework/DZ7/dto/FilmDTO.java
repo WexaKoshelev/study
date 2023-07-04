@@ -21,6 +21,7 @@ public class FilmDTO extends GenericDTO{
     private Genre genre;
     private String description;
     private String filmStudio;
+    private  Integer amount;
     private List<Long> directorsIds;
     private List<DirectorDTO> directorInfo;
 }

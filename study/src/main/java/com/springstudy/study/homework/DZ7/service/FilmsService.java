@@ -1,6 +1,9 @@
 package com.springstudy.study.homework.DZ7.service;
 
+import com.springstudy.study.homework.DZ7.constants.Errors;
 import com.springstudy.study.homework.DZ7.dto.FilmDTO;
+import com.springstudy.study.homework.DZ7.dto.FilmSearchDTO;
+import com.springstudy.study.homework.DZ7.exception.MyDeleteException;
 import com.springstudy.study.homework.DZ7.mapper.FilmsMapper;
 import com.springstudy.study.homework.DZ7.model.Directors;
 import com.springstudy.study.homework.DZ7.model.Films;
@@ -10,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
 
 import java.util.List;
@@ -22,15 +26,49 @@ public class FilmsService extends GenericService<Films, FilmDTO> {
         super(repository, mapper);
         this.directorsRepository = directorsRepository;
     }
-    public Page<FilmDTO> getAllFilms (Pageable pageable) {
+
+    public Page<FilmDTO> getAllFilms(Pageable pageable) {
         Page<Films> filmsPage = repository.findAll(pageable);
         List<FilmDTO> result = mapper.toDTOs(filmsPage.getContent());
         return new PageImpl<>(result, pageable, filmsPage.getTotalElements());
     }
-    public FilmDTO addDirector (Long filmId, Long directorId){
+
+    public FilmDTO addDirector(Long filmId, Long directorId) {
         FilmDTO film = getOne(filmId);
         Directors directors = directorsRepository.findById(directorId).orElseThrow(() -> new NotFoundException("Директор не найден"));
         update(film);
         return film;
     }
+//    public Page<FilmDTO> searchFilm(FilmSearchDTO filmSearchDTO,
+//                                    Pageable pageRequest) {
+//
+//        String genre = filmSearchDTO.getGenre() != null
+//                ? String.valueOf(filmSearchDTO.getGenre().ordinal())
+//                : null;
+//
+//        Page<Films> filmsPaginated = ((FilmsRepository) repository).searchFilms(
+//                filmSearchDTO.getFilmTitle(),
+//                genre,
+//                filmSearchDTO.getDirectorFIO(),
+//                pageRequest
+//        );
+//
+//        List<FilmDTO> result = mapper.toDTOs(filmsPaginated.getContent());
+//        return new PageImpl<>(result, pageRequest, filmsPaginated.getTotalElements());
+//
+//    }
+
+//    @Override
+//    public void deleteSoft(final Long id) throws MyDeleteException {
+//       Films films= repository.findById(id).orElseThrow(() -> new NotFoundException("Фильм не найдено"));
+//        boolean filmCanBeDeleted = ((FilmsRepository)repository).isFilmCanBeDeleted(id);
+//        if (filmCanBeDeleted) {
+//            markAsDeleted(films);
+//            repository.save(films);
+//        }
+//        else {
+//            throw new MyDeleteException(Errors.Films.FILM_DELETE_ERROR);
+//        }
+//    }
+
 }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>Изменить автора</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <h3 class="mt-3 mb-3" th:text="'Обновить кинережиссера ' + ${directors.getDirectorFIO()}"></h3>
+  <form class="needs-validation" novalidate style="max-width: 50vw" method="POST" th:action="@{/director/update}" th:object="${directorForm}">
+    <input type="hidden" name="id"
+           th:value="${directors.getId()}">
+    <div class="mt-3 row g-2">
+      <div class="col-md">
+        <div class="form-floating">
+          <input name="directorFIO" th:value="${directors.getDirectorFIO()}" type="text" class="form-control" id="directorFio" placeholder="ФИО кинорежиссера" required>
+          <label for="directorFIO">ФИО кинорежиссера</label>
+          <div class="invalid-feedback">Обязательное поле для заполнения</div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3 row g-2">
+      <div class="col-md">
+        <div class="form-floating">
+          <input name="birthDate" th:value="${directors.getBirthDate()}" type="date" class="form-control" id="date" placeholder="Дата рождения" required>
+          <label for="date">Дата рождения</label>
+          <div class="invalid-feedback">Обязательное поле для заполнения</div>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="form-floating">
+                    <textarea name="description" th:value="${directors.getDescription()}" th:text="${directors.getDescription()}" type="text" class="form-control" id="description"
+                              placeholder="Описание"></textarea>
+          <label for="description">Описание</label>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3 row g-2">
+      <button type="submit" class="btn btn-primary" onclick="validateForm()">Обновить</button>
+      <button type="button" class="btn btn-secondary" onclick="window.history.back()">Назад</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>
+

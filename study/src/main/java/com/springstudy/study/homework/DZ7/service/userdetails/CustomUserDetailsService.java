@@ -36,7 +36,7 @@ public class CustomUserDetailsService
         if (username.equals(adminUserName)) {
             return new CustomUserDetails(null, username, adminPassword, List.of(new SimpleGrantedAuthority("ROLE_" + UserRolesConstants.ADMIN)));
         } else {
-            Users user = userRepository.findUserByLogin(username);
+            Users user = userRepository.findUserByLoginAndIsDeletedFalse(username);
             List<GrantedAuthority> authorities = new ArrayList<>();
 
             //ROLE_USER, ROLE_LIBRARIAN

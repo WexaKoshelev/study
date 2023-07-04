@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
 
 @Controller
 @Slf4j
@@ -15,16 +16,16 @@ import org.springframework.web.bind.annotation.*;
 public class MVCOrderController {
     private final FilmsService filmsService;
     private final OrdersService ordersService;
+
     public MVCOrderController(FilmsService filmsService, OrdersService ordersService) {
         this.filmsService = filmsService;
         this.ordersService = ordersService;
     }
-    @PostMapping("/film")
-    public String rentBook(@ModelAttribute("rentBookInfo")OrdersDTO rentOrdersDTO) {
-        CustomUserDetails customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        rentOrdersDTO.setUserId(Long.valueOf(customUserDetails.getUserId()));
-        ordersService.rentFilm(rentOrdersDTO);
-        return "redirect:/rent/user-films/" + customUserDetails.getUserId();
+    @GetMapping("/film/{filmId}")
+    public String rentBook(@PathVariable Long filmId,
+                           Model model) {
+        model.addAttribute("book", filmsService.getOne(filmId));
+        return "userFilms/rentFilm";
     }
 
 }

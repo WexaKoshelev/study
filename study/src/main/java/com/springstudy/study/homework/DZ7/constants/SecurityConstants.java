@@ -6,6 +6,7 @@ public interface SecurityConstants {
 
     List<String> RESOURCES_WHITE_LIST = List.of("/resources/**",
             "/static/**",
+            "/templates/**",
             "/js/**",
             "/css/**",
             "/",
@@ -19,21 +20,24 @@ public interface SecurityConstants {
             "/films/search",
             "/films/{id}");
 
-    List<String> DIRECTORS_WHITE_LIST = List.of("/directors",
-            "/directors/search",
+    List<String> DIRECTORS_WHITE_LIST = List.of("/director",
+            "/director/search",
             "/films/search/filmsByDirectors",
-            "/directors/{id}");
+            "/director/{id}");
     List<String> FILMS_PERMISSION_LIST = List.of("/films/add",
             "/films/update",
             "/films/delete",
             "/films/download/{filmId}");
 
-    List<String> DIRECTORS_PERMISSION_LIST = List.of("/directors/add",
-            "/directors/update",
-            "/directors/delete");
+    List<String> DIRECTORS_PERMISSION_LIST = List.of(
+            "/director",
+            "/director/add",
+            "/director/update",
+            "/director/delete");
 
 
     List<String> USERS_WHITE_LIST = List.of(
+            "/users",
             "/login",
             "/users/registration",
             "/users/remember-password",

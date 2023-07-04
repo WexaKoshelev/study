@@ -39,14 +39,6 @@ public class UsersController extends GenericController <Users, UserDTO> {
         this.jwtTokenUtil = jwtTokenUtil;
         this.userService = userService;
     }
-
-
-    @Operation(description = "Добавить заказ к пользователю")
-    @RequestMapping(value = "/addOrders", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserDTO> addOrder(@RequestParam(value = "userId") Long userId,
-                                            @RequestParam(value = "orderId") Long orderId) {
-        return ResponseEntity.status(HttpStatus.OK).body(((UserService)service).addOrder(userId, orderId));
-    }
     @PostMapping("/auth")
     public ResponseEntity<?> auth(@RequestBody LoginDTO loginDTO) {
         Map<String, Object> response = new HashMap<>();
@@ -62,10 +54,5 @@ public class UsersController extends GenericController <Users, UserDTO> {
         return ResponseEntity.ok().body(response);
     }
 
-//    @Operation(description = "Список заказов ")
-//    @RequestMapping(value = "/allOrders", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-//    public  ResponseEntity<UserDTO> allOrders(){
-//        return  ResponseEntity.status(HttpStatus.OK).body(((UserService)service).allOrders();
-//    }
 }
 

@@ -8,6 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrdersRepository
         extends GenericRepository<Orders> {
-
-    Page<Orders> getOrderUserId (Long id, Pageable pageRequest);
+//    Page<Orders> getOrderUserId (Long id, Pageable pageRequest);
 }

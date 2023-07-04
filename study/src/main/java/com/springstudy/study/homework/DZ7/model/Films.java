@@ -31,7 +31,12 @@ public class Films extends GenericModel {
     @Column(name = "genre", nullable = false)
     private Genre genre;
 
-    @ManyToMany(mappedBy = "films")
+
+
+    @ManyToMany
+    @JoinTable(name = "FilmDirectors",
+            joinColumns = @JoinColumn(name = "director_id"), foreignKey = @ForeignKey(name = "FK_DIRECTORS_FILMS"),
+            inverseJoinColumns = @JoinColumn(name = "film_id"), inverseForeignKey = @ForeignKey(name = "FK_FILMS_DIRECTORS"))
     List <Directors> directors;
 
     @OneToMany(mappedBy = "films")
