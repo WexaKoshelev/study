@@ -27,7 +27,7 @@
       <tr th:each="rent: ${rentFilms}">
         <td>
                     <span th:if="${!rent.getFilmDTO().isDeleted()}">
-                     <a class="text-link text-blue" th:href="'/books/' + ${rent.getFilmDTO().getId()}" th:text="${rent.getFilmDTO().getFilmTitle()}"></a>
+                     <a class="text-link text-blue" th:href="'/films/' + ${rent.getFilmDTO().getId()}" th:text="${rent.getFilmDTO().getFilmTitle()}"></a>
                     </span>
           <span th:unless="${!rent.getFilmDTO().isDeleted()}" th:text="${rent.getFilmDTO().getFilmTitle()}"></span>
         </td>

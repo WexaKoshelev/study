@@ -22,7 +22,7 @@
         <div class="form-floating">
           <select class="form-select" name="genre" id="genre" required>
             <option selected value="default">Выберете жанр из списка</option>
-            <option th:each="genre : ${T(com.springstudy.study.homework.DZ7.model.Genre).values()}"
+            <option th:each="genre : ${T(com.springstudy.study.online_movie_theater.model.Genre).values()}"
                     th:value="${genre}" th:text="${genre.getGenreTextDisplay()}"></option>
           </select>
           <label for="genre">Жанр</label>

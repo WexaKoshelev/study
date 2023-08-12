@@ -24,8 +24,6 @@ public class SpringLibraryProjectApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws SQLException {
-
-        System.out.println("Swagger path: http://localhost:" + serverPort + "/swagger-ui/index.html");
         System.out.println("Application path: http://localhost:" + serverPort);
     }
 

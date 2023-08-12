@@ -38,7 +38,7 @@
           <div class="form-floating">
             <select class="form-select" name="genre" id="genre">
               <option selected th:value="null">Выберете жанр из списка</option>
-              <option th:each="genre : ${T(com.springstudy.study.homework.DZ7.model.Genre).values()}"
+              <option th:each="genre : ${T(com.springstudy.study.online_movie_theater.model.Genre).values()}"
                       th:value="${genre}" th:text="${genre.getGenreTextDisplay()}"></option>
             </select>
             <label for="genre">Жанр</label>
@@ -74,7 +74,7 @@
           <th scope="col">Продолжительность</th>
           <th scope="col">Дата премьеры</th>
           <th scope="col">Страна</th>
-          <th scope="col">Директор(ы)</th>
+          <th scope="col">Кинорежссеры(ы)</th>
           <th scope="col"></th>
         </tr>
         </thead>

@@ -8,16 +8,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Вход в Онлайн Библиотеку</title>
+    <title>Вход в фильмотеку</title>
 </head>
 <body>
 <div layout:fragment="content" class="container-fluid mt-5">
     <form method="POST" th:action="@{/login}">
         <div class="mb-3">
             <div class="mb-3 d-flex justify-content-center align-items-center">
-                <img src="/img/logo_login.svg" alt="" width="108" height="86">
+                <img src="/static/carousel/logo_login.svg" alt="" width="108" height="86">
             </div>
-            <h1 class="h3 form-floating col-md-4 offset-md-4 m-auto">Вход в онлайн фильмотеку</h1>
+            <h1 class="h3 form-floating col-md-4 offset-md-4 m-auto">Вход в фильмотеку</h1>
         </div>
         <div th:if="${param.error}">
             <div class="alert alert-danger">

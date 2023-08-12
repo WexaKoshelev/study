@@ -8,7 +8,7 @@
 </head>
 <body>
 <div layout:fragment="content">
-  <h3 class="mt-3 mb-3" th:text="'Аренда книги ' + ${film.getFilmTitle()}"></h3>
+  <h3 class="mt-3 mb-3" th:text="'Аренда фильма ' + ${film.getFilmTitle()}"></h3>
   <form method="POST" th:action="@{/rent/film}" th:object="${rentFilmForm}">
     <input type="hidden" name="filmId"
            th:value="${film.getId()}">
